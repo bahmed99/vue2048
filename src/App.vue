@@ -17,7 +17,7 @@ if (gameId)
   <main h-screen flex flex-col bg-primary text-foreground select-none>
   
     <div p-4 grid h-full place-items-center>
-    <h1>Hello team : BCK</h1>
+    <h1>Hello team : BCK good </h1>
       <div v-auto-animate="{ duration: 100 }" grid :class="{ 'lg:grid-cols-2': game.isMultiplayerGameOpen }" grid-cols-1 gap-4 place-content-center max-w="1200px" w-full mx-auto>
         <div max-w="600px" mx-auto w-full :class="{ 'lt-lg:pt-16': game.isMultiplayerGameOpen }">
           <LocalGame />
