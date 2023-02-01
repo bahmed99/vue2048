@@ -1,6 +1,6 @@
 #!/bin/bash
 cd .. && pnpm install
-echo "-------------------------- dependecies installed -------------------------------------------------"
+echo "-------------------------- dependecies installed -----------------------------------------------------"
 pnpm type-check
 echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
 pnpm lint 
