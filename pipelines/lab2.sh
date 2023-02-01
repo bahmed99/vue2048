@@ -7,5 +7,7 @@ pnpm lint
 echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
 pnpm build 
 echo "-------------------------- Construction du "package" à déployer terminée -----------------------------"
-pnpm test
+pnpm vitest
 echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
+pnpm outdated -- format json > ./reports/outdated-dependecies.json
+echo "-------------------------- Analyse des dépendances obsolètes terminée ---------------------------------"
