@@ -28,4 +28,5 @@ A clone of the popular [2048 Game](https://play2048.co/) written in Vue with sup
 
 ## License
 
+
 [MIT](./LICENSE) License © 2022-PRESENT [Jacob Clevenger](https://github.com/wheatjs)
