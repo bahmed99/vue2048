@@ -22,7 +22,7 @@ npm-installing:
 checking-type:
   stage: Type-Checking
   script:
-   - pnpm vue-tsc --noEmit
+   - pnpm type-check
    - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
 
 lint-analyze:
