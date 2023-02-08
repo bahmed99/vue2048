@@ -1,15 +1,13 @@
 #!/bin/bash
 cd .. && pnpm install
-echo "-------------------------- dependecies installed --------------------------"
+echo "-------------------------- dependecies installed -----------------------------------------------------"
 pnpm type-check
-echo "-------------------------- Vérification du typage statique du code done --------------------------"
+echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
 pnpm lint 
-echo "-------------------------- Analyse statique du code done --------------------------"
-pnpm build 
-echo '-------------------------- Construction du "package" à déployer done --------------------------'
+echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
+pnpm vite build --outDir=publish 
+echo "-------------------------- Construction du 'package' à déployer terminée -----------------------------"
 pnpm test
-echo '-------------------------- Exécution des tests done -------------------------- '
-
-outdated_dependencies=$(pnpm outdated --json)
-mkdir -p reports
-echo $outdated_dependencies > reports/outdated_dependencies.json
+echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
+pnpm outdated -- format json > ../reports/outdated-dependecies.json
+echo "-------------------------- Reports terminée ----------------------------------------------"
