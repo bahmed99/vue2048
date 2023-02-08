@@ -16,7 +16,7 @@ npm-installing:
     paths:
       - /node_modules
   script: 
-   - cd .. && pnpm install
+   - pnpm install
    - echo "-------------------------- dependencies installed -----------------------------------------------------"
   
 
