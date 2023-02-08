@@ -1,3 +1,2 @@
 include:
-    - project: 'ei8it213/bck-vue-2048/pipelines'
-    - file: '/pipelines/.gitlab-ci.yml'
+   - local: '/templates/.gitlab-ci.yml'
