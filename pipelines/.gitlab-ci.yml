@@ -1,6 +1,6 @@
 image: node:latest
 
-before-script:
+before_script:
   - npm install -g pnpm
 
 stages:          
