@@ -1,4 +1,7 @@
-image: pnpm
+image: node:latest
+
+before-script:
+  - npm install -g pnpm
 
 stages:          
   - Installing-dependencies
