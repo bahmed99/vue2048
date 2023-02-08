@@ -43,7 +43,7 @@ building:
     - echo "-------------------------- Construction du "package" à déployer terminée -----------------------------"
   artifacts:
     paths:
-      - dist/index.html
+      - dist/
 
 testing:
   stage: Test
