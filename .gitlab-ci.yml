@@ -1,4 +1,3 @@
 include:
     - project: 'ei8it213/bck-vue-2048/pipelines'
-    - ref: lab3
     - file: '/pipelines/.gitlab-ci.yml'
