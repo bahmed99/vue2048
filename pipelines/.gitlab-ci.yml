@@ -1,3 +1,5 @@
+.schedule:
+    daily at 8:00 am
 stages:          
   - Installing-dependencies
   - Type-Checking
