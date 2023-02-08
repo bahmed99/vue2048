@@ -12,7 +12,7 @@ stages:
 npm-installing:
   stage: Installing-dependencies
   script: 
-   - cd .. && pnpm install
+   - pnpm install
    - echo "-------------------------- dependencies installed -----------------------------------------------------"
 
 
