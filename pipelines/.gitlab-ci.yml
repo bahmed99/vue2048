@@ -1,9 +1,3 @@
-image: node:latest
-
-before_script:
-  - curl -f https://get.pnpm.io./v6.16.js | node - add
-  - pnpm config set store-dir .pnpm-store
-
 stages:          
   - Installing-dependencies
   - Type-Checking
@@ -11,13 +5,21 @@ stages:
   - Build
   - Test
 
+image: node:latest
 
+before_script:
+  - curl -f https://get.pnpm.io./v6.16.js | node - add
+  - pnpm config set store-dir .pnpm-store
 
 npm-installing:
   stage: Installing-dependencies
+  cache:
+    paths:
+      - /node_modules
   script: 
    - pnpm install
    - echo "-------------------------- dependencies installed -----------------------------------------------------"
+  
 
 
 checking-type:
