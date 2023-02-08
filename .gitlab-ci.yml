@@ -1,6 +1,13 @@
 stages:          
   - hello-stage
+  - test
 
+
+test:
+  stage: test
+  script:
+    - echo "test !!!"
+    
 hello-job:      
   stage: hello-stage
   script:
