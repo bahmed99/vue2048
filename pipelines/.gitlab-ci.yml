@@ -37,6 +37,9 @@ building:
   script:
     - pnpm build 
     - echo "-------------------------- Construction du "package" à déployer terminée -----------------------------"
+  artifacts:
+    paths:
+      - build/index.html
 
 testing:
   stage: Test
