@@ -34,3 +34,4 @@ Le pipeline de CI effectuera les actions suivantes :
 - A chaque fois qu'un commit est fait sur la branche principale, ou bien sur une branche qui commencera par `feature/`
 2. Mettre en place du cache des packages npm pour que le run de la pipeline soit plus rapide.
 3. Réfléchir à comment parallèliser certaines tâches afin d'optimiser le temps d'exécution
+
