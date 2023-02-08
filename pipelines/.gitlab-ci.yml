@@ -11,6 +11,7 @@ before_script:
   - npm install -g pnpm
 
 cache:
+    untracked: true
     paths:
       - /node_modules
 
@@ -42,7 +43,7 @@ building:
     - echo "-------------------------- Construction du "package" à déployer terminée -----------------------------"
   artifacts:
     paths:
-      - build/index.html
+      - dist/index.html
 
 testing:
   stage: Test
