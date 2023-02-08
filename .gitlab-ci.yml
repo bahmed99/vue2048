@@ -11,4 +11,4 @@ test:
 hello-job:      
   stage: hello-stage
   script:
-    - echo "Hello pipelines' world !
+    - echo "Hello pipelines world !"
