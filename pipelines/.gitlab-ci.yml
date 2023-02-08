@@ -10,11 +10,13 @@ image: node:latest
 before_script:
   - npm install -g pnpm
 
-npm-installing:
-  stage: Installing-dependencies
-  cache:
+cache:
     paths:
       - /node_modules
+
+
+npm-installing:
+  stage: Installing-dependencies
   script: 
    - pnpm install
    - echo "-------------------------- dependencies installed -----------------------------------------------------"
