@@ -1,5 +1,3 @@
-image: node:latest
-
 stages:          
   - Installing-dependencies
   - Type-Checking
@@ -7,6 +5,7 @@ stages:
   - Build
   - Test
 
+image: node:latest
 
 before_script:
   - npm install -g pnpm
@@ -17,7 +16,7 @@ npm-installing:
     paths:
       - /node_modules
   script: 
-   - pnpm install
+   - cd .. && pnpm install
    - echo "-------------------------- dependencies installed -----------------------------------------------------"
   
 
