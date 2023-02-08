@@ -1,6 +1,11 @@
 stages:          
   - Installing-dependencies
- 
+  - Type-Checking
+  - Static-Analyze
+  - Build
+  - Test
+
+
 
 npm-installing:
   stage: Installing-dependencies
@@ -8,3 +13,27 @@ npm-installing:
    - cd .. && pnpm install
    - echo "-------------------------- dependencies installed -----------------------------------------------------"
 
+
+checking-type:
+  stage: Type-Checking
+  script:
+   - pnpm type-check
+   - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
+
+lint-analyze:
+  stage: Static-Analyze
+  script:
+    - pnpm lint 
+    - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
+
+building:
+  stage: Build
+  script:
+    - pnpm build 
+    - echo "-------------------------- Construction du "package" à déployer terminée -----------------------------"
+
+testing:
+  stage: Test
+  script :
+    - pnpm vitest
+    - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
