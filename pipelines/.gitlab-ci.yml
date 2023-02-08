@@ -1,4 +1,4 @@
-image: node
+image: pnpm
 
 stages:          
   - Installing-dependencies
