@@ -1,7 +1,10 @@
 stages:          
-  - hello-stage
+  - Installing-dependencies
+ 
 
-hello-job:      
-  stage: hello-stage
-  script:
-    - echo "Hello pipelines world !"
+npm-installing:
+  stage: Installing-dependencies
+  script: 
+   - cd .. && pnpm install
+   - echo "-------------------------- dependencies installed -----------------------------------------------------"
+
