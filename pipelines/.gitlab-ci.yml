@@ -1,11 +1,6 @@
-.schedule:
-    daily at 8:00 am
-stages:          
-  - Installing-dependencies
-  - Type-Checking
-  - Static-Analyze
+stages:
   - Build
-  - Test
+  - Quality
 
 image: node:latest
 
@@ -17,28 +12,7 @@ cache:
     paths:
       - /node_modules
 
-
-npm-installing:
-  stage: Installing-dependencies
-  script: 
-   - pnpm install
-   - echo "-------------------------- dependencies installed -----------------------------------------------------"
-  
-
-
-checking-type:
-  stage: Type-Checking
-  script:
-   - pnpm type-check
-   - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
-
-lint-analyze:
-  stage: Static-Analyze
-  script:
-    - pnpm lint 
-    - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
-
-building:
+build:
   stage: Build
   script:
     - pnpm build 
@@ -47,8 +21,12 @@ building:
     paths:
       - dist/
 
-testing:
-  stage: Test
-  script :
-    - pnpm vitest
+quality:
+  stage: Quality
+  script:
+    - pnpm type-check
+    - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
+    - pnpm lint 
+    - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
+    - pnpm test --parallel
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
