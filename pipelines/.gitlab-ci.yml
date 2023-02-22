@@ -38,5 +38,6 @@ test:
   stage: Quality
   script:
     - pnpm test 
+    - sleep 30
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
   
