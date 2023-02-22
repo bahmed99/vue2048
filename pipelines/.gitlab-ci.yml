@@ -24,14 +24,12 @@ build:
 
 type-check:
   stage: Quality
-  parallel: 1
   script:
     - pnpm type-check
     - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
 
 lint:
   stage: Quality 
-  parallel: 1
   script: 
     - pnpm lint 
     - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
@@ -39,10 +37,12 @@ lint:
     - type-check
 test:
   stage: Quality
-  parallel: 2
   script:
     - pnpm test 
     - sleep 30
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
 
-  
+parallel:
+  matrix:
+    - job : type-check
+    - job : test 
