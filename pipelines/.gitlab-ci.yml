@@ -32,8 +32,11 @@ lint:
   script: 
     - pnpm lint 
     - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
+  needs: 
+    - type-check
 test:
   stage: Quality
   script:
-    - pnpm test --parallel
+    - pnpm test 
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
+  parallel: true
