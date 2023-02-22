@@ -39,4 +39,4 @@ test:
   script:
     - pnpm test 
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
-  parallel: true
+  
