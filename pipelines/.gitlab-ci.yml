@@ -21,12 +21,19 @@ build:
     paths:
       - dist/
 
-quality:
+type-check:
   stage: Quality
   script:
     - pnpm type-check
     - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
+
+lint:
+  stage: Quality 
+  script: 
     - pnpm lint 
     - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
+test:
+  stage: Quality
+  Script:
     - pnpm test --parallel
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
