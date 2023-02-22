@@ -15,6 +15,7 @@ cache:
 build:
   stage: Build
   script:
+    - pnpm install
     - pnpm build 
     - echo "-------------------------- Construction du "package" à déployer terminée -----------------------------"
   artifacts:
@@ -40,4 +41,5 @@ test:
     - pnpm test 
     - sleep 30
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
+  parallel: 1
   
