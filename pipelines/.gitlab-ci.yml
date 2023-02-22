@@ -37,12 +37,13 @@ lint:
     - type-check
 test:
   stage: Quality
+  parallel:
+    matrix:
+      - job: "test"
   script:
     - pnpm test 
     - sleep 30
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
+    
 
-parallel:
-  matrix:
-    - job : type-check
-    - job : test 
+
