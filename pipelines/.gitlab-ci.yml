@@ -12,8 +12,8 @@ before_script:
 build:
   stage: Build
   cache:
+    untracked: true
     paths:
-      - untracked: true
       - /node_modules
   script:
     - pnpm install
