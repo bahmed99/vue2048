@@ -24,7 +24,6 @@ build:
 
 type-check:
   stage: Quality
-  needs: []
   script:
     - pnpm type-check
     - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
@@ -38,10 +37,8 @@ lint:
     - type-check
 test:
   stage: Quality
-  needs: []
   script:
     - pnpm test 
-    - sleep 30
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
     
 
