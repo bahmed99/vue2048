@@ -41,5 +41,7 @@ test:
     - pnpm test 
     - sleep 30
     - echo "-------------------------- Exécution des tests terminée ----------------------------------------------"
-  parallel: 1
+  needs:
+    - type-check
+    - lint
   
