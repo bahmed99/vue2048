@@ -2,6 +2,16 @@ stages:
   - Build
   - Quality
 
+
+cache:
+  key:
+    files:
+      - pnpm-lock.yaml
+  paths:
+    - .pnpm-store
+    - node_modules/
+
+
 image: node:latest
 
 before_script:
@@ -11,10 +21,6 @@ before_script:
 
 build:
   stage: Build
-  cache:
-    untracked: true
-    paths:
-      - /node_modules
   script:
     - pnpm install
     - pnpm build 
