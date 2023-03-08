@@ -1,6 +1,10 @@
+include: 
+  - '/pipelines/templates/quality-template.yml'
+  - '/pipelines/templates/tests-template.yml'
+
 stages:
     - build
-    - Quality
+    - quality
     - test
 
 image: node:latest
@@ -18,12 +22,6 @@ before_script:
     - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
     - pnpm config set store-dir .pnpm-store
 
-
-include: "/pipelines/templates/quality-template.yml"
-include: "/pipelines/templates/tests-template.yml"
-
-
-
 build:
     stage: build
     cache:
@@ -35,16 +33,13 @@ build:
     artifacts:
         paths:
             - dist/
-type-check:
-  
-    
 
+type-check: 
+  stage : quality
 
-lint:
-  
+lint :
+  stage : quality
 
-run-test:
-
-
-
+test :
+  stage : test
 
