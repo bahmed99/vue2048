@@ -1,5 +1,4 @@
-stages:
-  - Quality
+
 
 type-check:
   extends: .hidden_job
