@@ -1,15 +1,13 @@
 
-
 type-check:
   extends: .hidden_job
-  stage: Quality
+
   script:
     - pnpm type-check
     - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
 
 lint:
   extends: .hidden_job
-  stage: Quality
   script: 
     - pnpm lint 
     - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
