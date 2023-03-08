@@ -1,4 +1,3 @@
-
 stages:
   - Quality
 
@@ -14,3 +13,7 @@ lint:
     - pnpm lint 
     - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
 
+
+.hidden_job:
+  script:
+    - echo "hidden job executed"
