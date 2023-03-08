@@ -4,7 +4,6 @@ stages:
     - lint
     - build
     - test
-    - publish
 
 image: node:latest
 
@@ -16,6 +15,9 @@ restore-job:
     stage: restore
     script:
         - pnpm install
+    artifacts:
+        paths:
+        - node_modules/
 
 static-typing-job:
     stage: static-typing
