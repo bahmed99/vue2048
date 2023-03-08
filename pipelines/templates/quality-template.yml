@@ -2,13 +2,15 @@ stages:
   - Quality
 
 type-check:
+  extends: .hidden_job
   stage: Quality
   script:
     - pnpm type-check
     - echo "-------------------------- Vérification du typage statique du code terminée --------------------------"
 
 lint:
-  stage: Quality 
+  extends: .hidden_job
+  stage: Quality
   script: 
     - pnpm lint 
     - echo "-------------------------- Analyse statique du code terminée -----------------------------------------"
@@ -17,3 +19,5 @@ lint:
 .hidden_job:
   script:
     - echo "hidden job executed"
+  rules:
+    - if: $CI_PIPELINE_SOURCE =="web"
