@@ -32,3 +32,13 @@ build:
     artifacts:
         paths:
             - dist/
+type-check:
+  stage: Quality
+
+
+lint:
+  stage: Quality
+
+
+
+
