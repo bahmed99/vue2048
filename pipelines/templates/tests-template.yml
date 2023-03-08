@@ -1,6 +1,3 @@
-stages:
-    - test
-
 
 run-test:
     stage: test
