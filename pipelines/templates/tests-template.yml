@@ -5,4 +5,8 @@ stages:
 run-test:
     stage: test
     script:
-        - pnpm test
+        - pnpm test 
+    artifacts:
+        reports:
+        junit: test-results.xml
+
