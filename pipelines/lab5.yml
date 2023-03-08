@@ -1,6 +1,7 @@
 stages:
     - build
     - Quality
+    - test
 
 image: node:latest
 
@@ -19,6 +20,8 @@ before_script:
 
 
 include: "/pipelines/templates/quality-template.yml"
+include: "/pipelines/templates/tests-template.yml"
+
 
 
 build:
@@ -39,6 +42,8 @@ type-check:
 lint:
   stage: Quality
 
+run-test:
+  stage: test
 
 
 
