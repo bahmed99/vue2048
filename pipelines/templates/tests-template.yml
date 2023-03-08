@@ -1,4 +1,4 @@
-run-test:
+test:
     script:
         - pnpm test 
     artifacts:
