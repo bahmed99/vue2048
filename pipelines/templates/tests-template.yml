@@ -1,0 +1,8 @@
+stages:
+    - test
+
+
+run-test:
+    stage: test
+    script:
+        - pnpm test
