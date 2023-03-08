@@ -2,6 +2,9 @@ test:
     script:
         - pnpm test 
     artifacts:
-        reports:
-            junit: test-results.xml
+        paths :
+            - reports/
+        reports: 
+            junit: vitest.xml
+
 
