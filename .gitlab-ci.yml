@@ -1,2 +1,2 @@
 include:
-   - local: '/pipelines/.gitlab-ci.yml'
+   - local: '/pipelines/lab5.yml'
