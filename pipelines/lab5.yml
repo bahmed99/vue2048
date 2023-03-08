@@ -37,13 +37,17 @@ build:
             - dist/
 type-check:
   stage: Quality
+  script:
+    
 
 
 lint:
   stage: Quality
+  script:
 
 run-test:
   stage: test
+  script:
 
 
 
