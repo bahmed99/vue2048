@@ -7,7 +7,7 @@ describe('GameControls score tests', () => {
   test('score higher than 128 should be orange', () => {
 
     const wrapper = mount(GameControls, {
-      
+
       props:{
         score: 130
       }
@@ -21,8 +21,7 @@ describe('GameControls score tests', () => {
   test('score lower than 128 should be light', () => {
 
     const wrapper = mount(GameControls, {
-     
-   
+
       props:{
         score: 127
       }
