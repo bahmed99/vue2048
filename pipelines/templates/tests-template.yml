@@ -1,10 +1,9 @@
 test:
     script:
-        - pnpm test 
+        - pnpm test-report
     artifacts:
-        paths :
-            - reports/
-        reports: 
-            junit: vitest.xml
-
-
+        when: always
+        paths:
+            - report.xml
+        reports:
+            junit: report.xml
