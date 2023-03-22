@@ -1,2 +1,2 @@
 include:
-   - local: '/pipelines/lab5.yml'
+   - local: '/pipelines/lab6.yml'
