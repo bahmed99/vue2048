@@ -32,4 +32,4 @@ build:
 deploy:
   stage: deploy
   script:
-    - swa deploy ./dist 
+    - swa deploy -d $AZURE_TOKEN ./dist 
