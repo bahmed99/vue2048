@@ -16,6 +16,7 @@ default:
   before_script:
     - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
     - pnpm config set store-dir .pnpm-store
+    - pnpm install -g @azure/static-web-apps-cli
 
 
 build:
@@ -33,5 +34,4 @@ build:
 deploy:
   stage: deploy
   script:
-    - pnpm install -g @azure/static-web-apps-cli
     - swa deploy ./dist -d $AZURE_TOKEN -w ./ --env production
