@@ -15,6 +15,7 @@ default:
   before_script:
     - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
     - pnpm config set store-dir .pnpm-store
+    - pnpm install -g @azure/static-web-apps-cli
 
 build:
   stage: build
@@ -28,8 +29,7 @@ build:
     paths:
       - dist/*
 
-deploy-prod:
+deploy:
   stage: deploy
-  when: manual
   script:
-    - pnpm dlx vercel deploy --prod --cwd dist/ --token=$VERCEL_TOKEN
+    - swa deploy ./dist 
