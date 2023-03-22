@@ -32,4 +32,4 @@ deploy-prod:
   stage: deploy
   when: manual
   script:
-    - pnpm dlx vercel deploy --prod --cwd dist/ --token="${VERCEL_TOKEN}"
+    - pnpm dlx vercel deploy --prod --cwd dist/ --token=$VERCEL_TOKEN
