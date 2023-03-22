@@ -1,5 +1,6 @@
 stages:
   - build
+  - deploy 
 
 default:
   image: node:latest
@@ -26,3 +27,23 @@ build:
   artifacts:
     paths:
       - dist/*
+
+deploy:
+  stage: deploy
+  environment:
+    name: production
+    url: https://bck-vue-2048.vercel.app
+  script:
+    - npx vercel --token $VERCEL_TOKEN --prod
+  only:
+    - manual
+
+deploy-staging:
+  stage: deploy
+  environment:
+    name: preview/$CI_COMMIT_REF_NAME
+    url: https://$CI_COMMIT_REF_NAME--bck-vue-2048.vercel.app
+  script:
+    - npx vercel --token $VERCEL_TOKEN --target production --name $CI_COMMIT_REF_NAME
+  only:
+    - merge_requests
