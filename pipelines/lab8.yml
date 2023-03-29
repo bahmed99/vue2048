@@ -20,6 +20,7 @@ default:
   before_script:
     - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
     - pnpm config set store-dir .pnpm-store
+    - pnpm install @azure/static-web-apps-cli
 
 build:
   stage: build
@@ -32,3 +33,20 @@ build:
   artifacts:
     paths:
       - dist/*
+
+deploy-qa:
+  stage: deploy
+  script:
+    - swa login --subscription-id $AZURE_SUB \
+          --resource-group rg-vue2048-qa \
+          --app-name rg-vue2048-qa
+    - swa deploy -n stapp-vue2048-qa ./dist $AZURE_TOKEN_QA --env production
+
+deploy-prod:
+  stage: deploy
+  script:
+    - swa login --subscription-id $AZURE_SUB \
+          --resource-group rg-vue2048-prod \
+          --app-name rg-vue2048-prod
+    - swa deploy -n stapp-vue2048-prod ./dist $AZURE_TOKEN_PROD --env production
+
