@@ -17,12 +17,9 @@ default:
       - .pnpm-store
       - node_modules/
     policy: pull
-    
   before_script:
     - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
     - pnpm config set store-dir .pnpm-store
-    - pnpm install -g @azure/static-web-apps-cli
-
 
 build:
   stage: build
@@ -35,17 +32,3 @@ build:
   artifacts:
     paths:
       - dist/*
-
-
-deploy-staging:
-  stage: deploy
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-  script:
-    - pnpm dlx vercel deploy --cwd dist/ --token=$VERCEL_TOKEN
-
-deploy-prod:
-  when: manual
-  stage: deploy
-  script:
-    - pnpm dlx vercel deploy --prod --cwd dist/ --token=$VERCEL_TOKEN
