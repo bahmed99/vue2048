@@ -1,0 +1,9 @@
+test:
+    script:
+        - pnpm test-report
+    artifacts:
+        when: always
+        paths:
+            - report.xml
+        reports:
+            junit: report.xml

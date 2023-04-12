@@ -1,0 +1,4 @@
+# az group create --name rg-vue2048-qa --location francecentral --tags "class=EI8IT213"
+
+
+az staticwebapp create --name stapp-vue2048-qa --resource-group rg-vue2048-qa --location westeurope --tags "class=EI8IT213" --sku Free 

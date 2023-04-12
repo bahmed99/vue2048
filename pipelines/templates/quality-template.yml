@@ -1,0 +1,21 @@
+.hidden_job:
+  script:
+    - echo "hidden job executed"
+  rules:
+    - if: $CI_PIPELINE_SOURCE =="web"
+
+.on-manual-trigger:
+    rules:
+        - if: $CI_PIPELINE_SOURCE == "web"
+
+type-check:
+    extends: .on-manual-trigger
+    script:
+        - pnpm type-check
+
+lint:
+    extends: .on-manual-trigger
+    script:
+        - pnpm lint
+
+
