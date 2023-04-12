@@ -40,7 +40,7 @@ deploy-qa:
     <<: *global_cache
     policy: pull-push
   script:
-    - pnpm swa deploy -n stapp-vue2048-qa ./dist $AZURE_TOKEN_QA --env production
+    - pnpm swa deploy -n stapp-vue2048-qa dist --deployment-token $AZURE_TOKEN_QA 
 
 deploy-prod:
   stage: deploy
@@ -48,5 +48,5 @@ deploy-prod:
     <<: *global_cache
     policy: pull-push
   script:
-    - pnpm swa deploy -n stapp-vue2048-prod ./dist $AZURE_TOKEN_PROD --env production
+    - pnpm swa deploy -n stapp-vue2048-prod dist --deployment-token $AZURE_TOKEN_PROD 
 
