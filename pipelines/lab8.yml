@@ -40,10 +40,7 @@ deploy-qa:
     <<: *global_cache
     policy: pull-push
   script:
-    - swa login --subscription-id $AZURE_SUB \
-          --resource-group rg-vue2048-qa \
-          --app-name rg-vue2048-qa
-    - swa deploy -n stapp-vue2048-qa ./dist $AZURE_TOKEN_QA --env production
+    - pnpm swa deploy -n stapp-vue2048-qa ./dist $AZURE_TOKEN_QA --env production
 
 deploy-prod:
   stage: deploy
@@ -51,8 +48,5 @@ deploy-prod:
     <<: *global_cache
     policy: pull-push
   script:
-    - swa login --subscription-id $AZURE_SUB \
-          --resource-group rg-vue2048-prod \
-          --app-name rg-vue2048-prod
-    - swa deploy -n stapp-vue2048-prod ./dist $AZURE_TOKEN_PROD --env production
+    - pnpm swa deploy -n stapp-vue2048-prod ./dist $AZURE_TOKEN_PROD --env production
 
