@@ -20,3 +20,6 @@ jobs:
         run: |
           pnpm install
           pnpm build
+          pnpm pack
+          mv my-package-*.tgz package.tgz
+          echo "::set-output name=package::package.tgz"
