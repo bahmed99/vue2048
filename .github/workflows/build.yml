@@ -29,12 +29,18 @@ jobs:
         with:
           name: vue2048
           path: dist/
-
+          
+      - name: Run Unit Tests
+        if: github.event_name == 'pull_request'
+        run: |
+          pnpm test
           
       - name: Run Linter
+        if: github.event_name == 'pull_request'
         run: |
           pnpm lint
           
       - name: Run Type Checker
+        if: github.event_name == 'pull_request'
         run: |
           pnpm type-check
