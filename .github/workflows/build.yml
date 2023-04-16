@@ -2,9 +2,20 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+  schedule:
+    - cron: "0 8 * * 1"
   workflow_dispatch:
-
+    inputs:
+      run-static-analysis:
+        description: 'Run static analysis'
+        required: false
+        default: true
+      run-tests:
+        description: 'Run tests'
+        required: false
+        default: true
 
 env:
   AZURE_WEBAPP_NAME_PROD: stapp-vue2048-prod 
@@ -21,7 +32,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
+        with:
+          path: '.'
+          
       - name: Cache Dependencies
         id: cache-dependencies
         uses: actions/cache@v2
@@ -30,7 +43,9 @@ jobs:
             ~/.pnpm-store
             node_modules
           key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml') }}
-      
+          restore-keys: |
+            ${{ runner.os }}-build-
+          
       - name: setup pnpm environment
         uses: pnpm/action-setup@v2
         with:
@@ -46,19 +61,20 @@ jobs:
         with:
           name: vue2048
           path: dist/
+        if: github.ref != 'refs/heads/docs'
           
       - name: Run Unit Tests
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || ${{ github.event_name == 'workflow_dispatch' && inputs.run-tests == 'true' }}
         run: |
           pnpm test
           
       - name: Run Linter
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || ${{ github.event_name == 'workflow_dispatch' && inputs.run-static-analysis == 'true' }}
         run: |
           pnpm lint
           
       - name: Run Type Checker
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || ${{ github.event_name == 'workflow_dispatch' && inputs.run-static-analysis == 'true' }}
         run: |
           pnpm type-check
           
