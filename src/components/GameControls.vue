@@ -2,7 +2,7 @@
 import { useGameStore } from '~/stores/game'
 
 
-const props = defineProps<{score:number}>();
+//const = defineProps<{score:number}>();
 
 const game = useGameStore()
 </script>
