@@ -12,16 +12,32 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
       - name: setup pnpm environement
         uses: pnpm/action-setup@v2
         with:
             version: 7.1.7
+            
       - name: build
         run: |
           pnpm install
           pnpm build
+          
       - name: Upload artifact
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v2
         with:
           name: vue2048
           path: dist/
+          
+      - name: Run Unit Tests
+        run: |
+          pnpm test
+          
+      - name: Run Linter
+        run: |
+          pnpm lint
+          
+      - name: Run Type Checker
+        run: |
+          pnpm type-check
