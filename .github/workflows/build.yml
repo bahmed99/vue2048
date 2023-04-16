@@ -12,12 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: 
-          npm install -g pnpm
-          pnpm install --frozen-lockfile
-      - name: Build
-        run: 
+      - name: setup pnpm environement
+        uses: pnpm/action-setup@v2
+      - name: build
+        run: |
+          pnpm install
           pnpm build
-          pnpm pack
-          mv my-package-*.tgz package.tgz
