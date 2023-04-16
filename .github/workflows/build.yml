@@ -12,7 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7.1.7
+      - name: Install Dependencies
+        run: 
+          npm install -g pnpm
+          pnpm install --frozen-lockfile
+      - name: Build
+        run: 
+          pnpm build
+          pnpm pack
+          mv my-package-*.tgz package.tgz
