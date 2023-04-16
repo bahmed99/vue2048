@@ -20,6 +20,8 @@ jobs:
         run: |
           pnpm install
           pnpm build
-          pnpm pack
-          mv my-package-*.tgz package.tgz
-          echo "::set-output name=package::package.tgz"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: vue2048
+          path: dist/
