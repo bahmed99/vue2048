@@ -13,10 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: setup pnpm environement
+      - name: Cache Dependencies
+        id: cache-dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('**/pnpm-lock.yaml') }}
+      
+      - name: setup pnpm environment
         uses: pnpm/action-setup@v2
         with:
-            version: 7.1.7
+          version: 7.1.7
             
       - name: build
         run: |
