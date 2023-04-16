@@ -8,7 +8,8 @@ on:
 env:
   AZURE_WEBAPP_NAME_PROD: stapp-vue2048-prod 
   AZURE_WEBAPP_NAME_QA: stapp-vue2048-qa
-  AZURE_WEBAPP_PACKAGE_PATH: './dist/'       
+  AZURE_WEBAPP_PACKAGE_PATH: './dist/'  
+  APP_LOCATION: "/"
   
 permissions:
   contents: read
@@ -69,19 +70,17 @@ jobs:
          with:
            name: vue2048
        - name: Deploy to prod 
-         uses: azure/webapps-deploy@v2
+         uses: Azure/static-web-apps-deploy@v1
          with:
           app-name: ${{ env.AZURE_WEBAPP_NAME_PROD }}
-          publish-profile: ${{ secrets.AZURE_TOKEN_PROD }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          action: 'upload'
-          skip_app_build: true
-         
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN_PROD }}
+          app_artifact_location: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          app_location: ${{ env.APP_LOCATION }}
+
        - name: Deploy to qa
-         uses: azure/webapps-deploy@v2
+         uses: Azure/static-web-apps-deploy@v1
          with:
           app-name: ${{ env.AZURE_WEBAPP_NAME_QA }}
-          publish-profile: ${{ secrets.AZURE_TOKEN_QA }}
-          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          action: 'upload'
-          skip_app_build: true
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN_QA }}
+          app_artifact_location: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          app_location: ${{ env.APP_LOCATION }}
