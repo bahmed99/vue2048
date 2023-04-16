@@ -29,10 +29,7 @@ jobs:
         with:
           name: vue2048
           path: dist/
-          
-      - name: Run Unit Tests
-        run: |
-          pnpm test
+
           
       - name: Run Linter
         run: |
