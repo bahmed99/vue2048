@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+
 env:
   AZURE_WEBAPP_NAME_PROD: stapp-vue2048-prod 
   AZURE_WEBAPP_NAME_QA: stapp-vue2048-qa
