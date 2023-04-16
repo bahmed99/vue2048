@@ -61,7 +61,7 @@ jobs:
         with:
           name: vue2048
           path: dist/
-          retention-days: github.ref == 'refs/heads/main' && 7 || 1
+          retention-days: ${{ github.ref == 'refs/heads/main' && 7 || 1 }}
         if: github.ref != 'refs/heads/docs'
           
       - name: Run Unit Tests
