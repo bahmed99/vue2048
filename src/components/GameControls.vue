@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useGameStore } from '~/stores/game'
-
-
-//const = defineProps<{score:number}>();
-
+const props = defineProps<{score:number}>();
 const game = useGameStore()
 </script>
 
