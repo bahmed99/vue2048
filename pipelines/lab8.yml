@@ -1,11 +1,7 @@
 stages:
   - build
-  - deploy
-
-workflow:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-    - if: $CI_PIPELINE_SOURCE != 'merge_request_event'
+  - qa
+  - production
 
 default:
   image: node:latest
@@ -49,4 +45,3 @@ deploy-prod:
     policy: pull-push
   script:
     - pnpm swa deploy -n stapp-vue2048-prod dist --deployment-token $AZURE_TOKEN_PROD 
-

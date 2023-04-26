@@ -1,0 +1,6 @@
+name: bck-vue-2048
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: A minimal Azure Native Python Pulumi program
